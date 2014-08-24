@@ -1,0 +1,23 @@
+﻿@model MVCtrab.ViewModels.CostumerIndexData
+
+<table class="table">
+    <tr>
+        <th>Telefones</th>
+        <th></th>
+    </tr>
+    @if (Model.Phones != null)
+    {
+        foreach (var p in Model.Phones)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => p.Telephone)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Phone", new { id = p.Id }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Phone", new { id = p.Id }, null)
+                </td>
+            </tr>
+        }
+    }
+</table>

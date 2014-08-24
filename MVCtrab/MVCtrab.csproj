@@ -230,6 +230,9 @@
     <Content Include="Views\Costumer\Edit.cshtml" />
     <Content Include="Views\Phone\Edit.cshtml" />
     <Content Include="Views\Address\Edit.cshtml" />
+    <Content Include="Views\Costumer\_PhoneRender.cshtml" />
+    <Content Include="Views\Costumer\_AddressRender.cshtml" />
+    <Content Include="Views\Costumer\_CostumerRender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

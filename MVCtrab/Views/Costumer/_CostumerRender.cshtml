@@ -1,0 +1,64 @@
+﻿@model MVCtrab.ViewModels.CostumerIndexData
+@{
+    ViewBag.Title = "Cliente";
+}
+
+<h2>Cliente</h2>
+
+@*<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Costumers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+    </dl>
+</div>*@
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Ramo</th>
+        <th>Proprietário</th>
+        <th></th>
+    </tr>
+    @if (Model.Costumers != null)
+    {
+        foreach (var c in Model.Costumers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => c.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => c.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => c.Branch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => c.Owner)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Costumer", new { id = c.Id }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Costumer", new { id = c.Id }, null)
+                </td>
+            </tr>
+        }
+    }
+</table>
+@*<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Excluir", "Delete", new { id = Model.Id })
+</p>*@
