@@ -7,9 +7,9 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Excluir</h2>
 <p class="error">@ViewBag.ErrorMessage</p>
-<h3>Você tem certeza que quer deletar isso?</h3>
+<h3>Você tem certeza que quer excluir esse item?</h3>
 <div>
     <h4>Endereço</h4>
     <hr />
@@ -17,7 +17,20 @@
         <dt>
             @Html.DisplayNameFor(model => model.Id)
         </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCostumer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdCostumer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Local)
+        </dt>
         <dd>
             @Html.DisplayFor(model => model.Local)
         </dd>
