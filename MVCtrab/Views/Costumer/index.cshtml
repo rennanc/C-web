@@ -1,0 +1,96 @@
+﻿@*@model PagedList.IPagedList<MVCtrab.Models.Costumer>
+@using PagedList.Mvc;*@
+@model MVCtrab.ViewModels.CostumerIndexData
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<h2>Clientes</h2>
+
+<p>
+    @Html.ActionLink("Novo Cliente", "Create")
+</p>
+
+@*@Html.DropDownListFor(x => x.Costumers,
+        new SelectList(Model.Costumers, "ID", "Name"))*@
+
+@*<script type="text/javascript">
+    function selectionChange(id) {
+        window.location = "/Costumer/index?id=" + id;
+    }
+</script>*@
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $('.selectpicker').selectpicker();
+    });
+</script>
+
+<div class="combobox-container">
+
+    @*SCRIPT AJAX para páginas externas*@
+    <script type="text/javascript">
+        function atualizarDefinicao(id)
+        {
+            $.ajax({
+                type: 'GET', url: '/Costumer/_PhoneRender?id='+id,
+                dataType: 'html',
+                cache: false,
+                async: true,
+                success: function (data) { $('#ajaxPhoneRender').html(data); }
+            });
+
+            $.ajax({
+                type: 'GET', url: '/Costumer/_AddressRender?id='+id,
+                dataType: 'html',
+                cache: false,
+                async: true,
+                success: function (data) { $('#ajaxAddressRender').html(data); }
+            });
+
+            $.ajax({
+                type: 'GET', url: '/Costumer/_CostumerRender?id=' + id,
+                dataType: 'html',
+                cache: false,
+                async: true,
+                success: function (data) { $('#ajaxCostumerRender').html(data); }
+            });
+        }
+    </script>
+
+   
+        <select class="selectpicker" onchange="atualizarDefinicao(this.options[this.selectedIndex].value);">
+            <option value="null">--Selecione o Cliente--</option>
+            @foreach (var item in Model.Costumers)
+            {
+                <option value="@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.Name)</option>
+            }
+        </select>
+    </div>
+
+    <div id="ajaxCostumerRender">
+        @{
+            Html.RenderPartial("_CostumerRender");
+        }
+    </div>
+
+    <div id="ajaxAddressRender">
+        @{
+            Html.RenderPartial("_AddressRender");
+        }
+    </div>
+
+    <div id="ajaxPhoneRender">
+        @{
+            Html.RenderPartial("_PhoneRender");
+        }
+    </div>
+
+    <br />
+
