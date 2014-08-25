@@ -3,26 +3,6 @@
     ViewBag.Title = "Cliente";
 }
 
-@*<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Costumers)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Branch)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Owner)
-        </dd>
-    </dl>
-</div>*@
-
 @if (Model.Costumers != null)
 {
     if (Model.Costumers.Count() == 1)
@@ -52,8 +32,8 @@
                         @Html.DisplayFor(modelItem => c.Owner)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", "Costumer", new { id = c.Id }, null) |
-                        @Html.ActionLink("Delete", "Delete", "Costumer", new { id = c.Id }, null)
+                        @Html.ActionLink("Editar", "Edit", "Costumer", new { id = c.Id }, null) |
+                        @Html.ActionLink("Excluir", "Delete", "Costumer", new { id = c.Id }, null)
                     </td>
                 </tr>
             }

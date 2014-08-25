@@ -7,7 +7,7 @@ namespace MVCtrab
     {
         public void ConfigureAuth(IAppBuilder app)
         {
-            // Configure o contexto db, gerenciador de usuários e gerenciador de login para usar uma única instância por solicitação
+            // Configuração do contexto db
             app.CreatePerOwinContext(ApplicationDbContext.Create);
           
         }
