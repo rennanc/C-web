@@ -13,7 +13,6 @@ namespace MVCtrab.Models
         public int Id { get; set; }
 
         [Display(Name = "IdCostumer")]
-        [HiddenInput(DisplayValue = false)]
         public int IdCostumer { get; set; }
 
         //Telefone

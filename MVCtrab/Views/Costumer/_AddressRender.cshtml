@@ -1,13 +1,13 @@
 ﻿@model MVCtrab.ViewModels.CostumerIndexData
-
+@if (Model.Adress != null)
+    {
 <table class="table">
     <tr>
         <th>Endereços</th>
         <th></th>
     </tr>
-    @if (Model.Adress != null)
-    {
-        foreach (var p in Model.Adress)
+    
+        @foreach (var p in Model.Adress)
         {
             <tr>
                 <td>
@@ -19,5 +19,6 @@
                 </td>
             </tr>
         }
-    }
 </table>
+@Html.ActionLink("Novo Endereço", "Create", "Address", new { IdCostumer = Request.Params["Id"] }, null)
+    }

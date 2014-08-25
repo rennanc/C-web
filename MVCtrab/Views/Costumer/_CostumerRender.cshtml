@@ -3,8 +3,6 @@
     ViewBag.Title = "Cliente";
 }
 
-<h2>Cliente</h2>
-
 @*<div>
     <dl class="dl-horizontal">
         <dt>
@@ -25,40 +23,42 @@
     </dl>
 </div>*@
 
-<table class="table">
-    <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Ramo</th>
-        <th>Proprietário</th>
-        <th></th>
-    </tr>
-    @if (Model.Costumers != null)
+@if (Model.Costumers != null)
+{
+    if (Model.Costumers.Count() == 1)
     {
-        foreach (var c in Model.Costumers)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => c.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => c.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => c.Branch)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => c.Owner)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "Costumer", new { id = c.Id }, null) |
-                    @Html.ActionLink("Delete", "Delete", "Costumer", new { id = c.Id }, null)
-                </td>
-            </tr>
-        }
+        <h4>Dados do Cliente</h4>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Ramo</th>
+            <th>Proprietário</th>
+            <th></th>
+        </tr>
+            @foreach (var c in Model.Costumers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => c.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => c.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => c.Branch)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => c.Owner)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Costumer", new { id = c.Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Costumer", new { id = c.Id }, null)
+                    </td>
+                </tr>
+            }
+    </table>
     }
-</table>
-@*<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Excluir", "Delete", new { id = Model.Id })
-</p>*@
+@*@Html.ActionLink("Novo Cliente", "Create", "Custumer")*@
+
+}
